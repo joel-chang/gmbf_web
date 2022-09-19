@@ -11,6 +11,7 @@
     "react": "16.5.2",
     "react-dom": "16.5.2",
     "react-magic-dropzone": "1.0.1",
+    "react-router-dom": "^6.4.0",
     "react-scripts": "2.0.3",
     "web-vitals": "^2.1.4"
   },

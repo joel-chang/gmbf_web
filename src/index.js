@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import MagicDropzone from "react-magic-dropzone";
 import {COLORS} from "./colors.js"
+import Detector from "./detector.js";
 
 import "./styles.css";
 const tf = require('@tensorflow/tfjs');
@@ -10,15 +11,6 @@ const weights = '/web_model/model.json';
 
 const names = ['0_9', '10_11', '12_13', '14_15', '16_17', '18_20', '20_100']
 
-
-
-class Header extends React.Component {
-  render() {
-    return (
-      <h1 className="title">BODY FAT GUESSER</h1>
-    );
-  }
-}
 
 class App extends React.Component {
   state = {
@@ -107,10 +99,10 @@ class App extends React.Component {
         ctx.strokeRect(x1, y1, width, height);
 
         // Draw the label background.
-        ctx.fillStyle = COLORS.img_bg;
-        const textWidth = ctx.measureText(klass).width;
-        const textHeight = parseInt(font, 10); // base 10
-        ctx.fillRect(x1, y1, textWidth + 4, textHeight + 4);
+        // ctx.fillStyle = COLORS.img_bg;
+        // const textWidth = ctx.measureText(klass).width;
+        // const textHeight = parseInt(font, 10); // base 10
+        // ctx.fillRect(x1, y1, textWidth + 4, textHeight + 4);
 
       }
       for (i = 0; i < valid_detections_data; ++i){
@@ -122,7 +114,7 @@ class App extends React.Component {
 
         // Draw the text last to ensure it's on top.
         ctx.fillStyle = COLORS.dark_blue;
-        ctx.fillText(klass, x1, y1);
+        // ctx.fillText(klass, x1, y1);
 
       }
     });
@@ -157,7 +149,9 @@ class App extends React.Component {
     );
   }
 }
-const titleElement = document.getElementById("title");
-ReactDOM.render(<Header />, titleElement);
-const rootElement = document.getElementById("root");
+
+const rootElement = document.getElementById("landing_card_right_half");
 ReactDOM.render(<App />, rootElement);
+
+const cardElement = document.getElementById("root");
+// ReactDOM.render(<Detector />, cardElement);
