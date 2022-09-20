@@ -181,21 +181,41 @@ svg {
     right: 0px;
     height: 100%;
     width: 100%;
+    border: solid lightgray 2px;
   }
 
   #landing_card_right_half {
     float:none;
     width: 100%;
+    padding: 0;
+    display:block;
   }
   
   #landing_card_left_half {
     float:none;
     width: 100%;
+    padding: 0;
+    display:block;
   }
 
+  .Dropzone-page {
+    margin: 0px;
+  }
   body {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  #top_part {
+    padding: 40px 10px;
+  }
+
+  #home_icon > * {
+    width: 100%;
+  }
+  
+  .landing_card_title_group {
+    padding: 0 10px 10px;
   }
 }
 

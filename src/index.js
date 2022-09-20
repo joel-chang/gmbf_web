@@ -99,10 +99,10 @@ class App extends React.Component {
         ctx.strokeRect(x1, y1, width, height);
 
         // Draw the label background.
-        // ctx.fillStyle = COLORS.img_bg;
-        // const textWidth = ctx.measureText(klass).width;
-        // const textHeight = parseInt(font, 10); // base 10
-        // ctx.fillRect(x1, y1, textWidth + 4, textHeight + 4);
+        ctx.fillStyle = COLORS.img_bg;
+        const textWidth = ctx.measureText(klass).width;
+        const textHeight = parseInt(font, 10); // base 10
+        ctx.fillRect(x1, y1, textWidth + 4, textHeight + 4);
 
       }
       for (i = 0; i < valid_detections_data; ++i){
@@ -114,7 +114,7 @@ class App extends React.Component {
 
         // Draw the text last to ensure it's on top.
         ctx.fillStyle = COLORS.dark_blue;
-        // ctx.fillText(klass, x1, y1);
+        ctx.fillText(klass, x1, y1);
 
       }
     });
