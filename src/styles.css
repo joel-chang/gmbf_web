@@ -151,6 +151,7 @@ svg {
   bottom: 10px;
   left: 10px;
   right: 10px;
+  border: solid black 2px;
 }
 
 
@@ -172,7 +173,17 @@ svg {
   width: 49%;
 }
 
-@media only screen and (max-width: 1200px) {
+.img_desc {
+  border: solid black 2px;
+  padding: 3px 10px;
+  margin: 0 0 5px;
+  font-weight: 300;
+  width: 80%;
+}
+@media only screen and (max-width: 1800px) {
+  .Dropzone {
+    margin-bottom: 5px;
+  }
   #canvas {
     position: absolute;
     top: 0px;
@@ -181,13 +192,12 @@ svg {
     right: 0px;
     height: 100%;
     width: 100%;
-    border: solid lightgray 2px;
   }
 
   #landing_card_right_half {
     float:none;
     width: 100%;
-    padding: 0;
+    padding: 0 0 90px 0;
     display:block;
   }
   
@@ -202,12 +212,14 @@ svg {
     margin: 0px;
   }
   body {
+    padding-top: 50px;
+    background-color: white;
     padding-left: 0;
     padding-right: 0;
   }
 
   #top_part {
-    padding: 40px 10px;
+    padding: 0px 40px 10px;
   }
 
   #home_icon > * {
