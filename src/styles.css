@@ -252,4 +252,10 @@ svg {
   }
 }
 
+@media only screen and (max-width: 700px) {
+  .img_desc {
+    max-width: 90%;
+  }
+}
+
 
