@@ -2,13 +2,11 @@ body {
   color: '#000000';
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
-  width: 100%;
+  max-width: 1800px;
   background-color: #ffffff;
-  padding-top: 50px;
-  padding-left: 300px;
-  padding-right: 300px;
+  padding: 50px;
   height: 100%;
-  margin: 0;
+  margin: auto;
   align-items: center;
   vertical-align: middle;
 }
@@ -61,7 +59,6 @@ svg {
 }
 
 .Dropzone-page {
-  margin: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,7 +91,7 @@ svg {
 
 #top_part {
   background-color: white;
-  margin: 20px;
+  margin: 20px 0;
 }
 
 #home_icon {
@@ -109,41 +106,38 @@ svg {
 #landing_card_left_half {
   display: grid;
   height: 100%;
-  width: 60%;
+  width: calc(100% - 700px);
   float: left;
   background-color: white;
-  padding: 50px;
 }
 
 .landing_card_title_group {
-  padding: 100px 0;
   width: 100%;
 }
 
 #landing_card_title {
-  font-size: 50px;
-  line-height: 50px;
+  font-size: xx-large;
+  line-height: xx-large;
   padding:0;
   margin: 0;
 }
 
 #landing_card_subtitle {
-  font-size: 20px;
+  font-size: small;
 }
 
 #landing_card_description {
   width: 60%;
-  line-height: 25px;
+  line-height: small;
   padding:0;
   margin:20px 0;
   font-weight: 300;
 }
 
 #landing_card_right_half {
-  width: 40%;
+  width: 700px;
   float: right;
   background-color: white;
-  padding:50px;
 }
 
 #canvas {
@@ -179,16 +173,22 @@ svg {
   padding: 3px 10px;
   margin: 0 0 5px;
   font-weight: 300;
-  width: 100%;
+  max-width: 660px;
 }
-@media only screen and (max-width: 1800px) {
-  .Dropzone {
-    margin-bottom: 5px;
-  }
+@media only screen and (max-width: 1200px) {
   #top_part {
+    margin: 0;
     align-items: center;
     padding: 0 20px;
     text-align: center;
+  }
+  #landing_card_description {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 1079px) {
+  .Dropzone {
+    margin-bottom: 5px;
   }
   #home_icon > img {
     max-width: 600px;
@@ -245,5 +245,11 @@ svg {
   .landing_card_title_group {
     padding: 0 10px 10px;
   }
+
+  .img_desc {
+    max-width: 660px;
+    margin: 0 calc((100vw - 660px)/2) 5px;
+  }
 }
+
 
