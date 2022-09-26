@@ -3,10 +3,10 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
   width: 100%;
-  background-color: #e2e2e2;
-  padding-left: 100px;
-  padding-right: 100px;
-  height: 100vh;
+  background-color: #ffffff;
+  padding-left: 300px;
+  padding-right: 300px;
+  height: 100%;
   margin: 0;
   align-items: center;
   vertical-align: middle;
@@ -17,6 +17,8 @@ body {
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -178,7 +180,7 @@ svg {
   padding: 3px 10px;
   margin: 0 0 5px;
   font-weight: 300;
-  width: 80%;
+  width: 100%;
 }
 @media only screen and (max-width: 1800px) {
   .Dropzone {
