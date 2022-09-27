@@ -175,6 +175,23 @@ svg {
   font-weight: 300;
   max-width: 660px;
 }
+
+#visitor_counter_wrapper {
+  font-size: xx-small;
+  font-weight: 300;
+  padding: 0;
+  margin: 0 0 5px 0;
+  text-align: left;
+}
+
+#det_counter_wrapper {
+  font-size: xx-small;
+  font-weight: 300;
+  padding: 0;
+  margin: 0 0 5px 0;
+  text-align: left;
+}
+
 @media only screen and (max-width: 1200px) {
   #top_part {
     margin: 0;
@@ -249,6 +266,14 @@ svg {
   .img_desc {
     max-width: 660px;
     margin: 0 calc((100vw - 660px)/2) 5px;
+  }
+
+  #visitor_counter_wrapper {
+    text-align: center;
+  }
+  
+  #det_counter_wrapper {
+    text-align: center;
   }
 }
 

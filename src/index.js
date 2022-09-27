@@ -4,11 +4,55 @@ import MagicDropzone from "react-magic-dropzone";
 import {COLORS} from "./colors.js"
 
 import "./styles.css";
+
+import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+import { getDatabase, onDisconnect, onValue, ref, set } from "firebase/database";
+
+const firebaseConfig = {
+  apiKey: "A",
+  authDomain: "r",
+  databaseURL: "h",
+  projectId: "r",
+  storageBucket: "r",
+  messagingSenderId: "4",
+  appId: "1",
+  measurementId: "G"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+const db = getDatabase();
+const visitCountRef = ref(db, 'pub/visitor_count');
+
+onValue(visitCountRef, (snapshot) => {
+  const data = snapshot.val();
+  console.log(data);
+  set(visitCountRef, data+1);
+}, {onlyOnce: true});
+
+onValue(visitCountRef, (snapshot) => {
+  const data = snapshot.val();
+  document.getElementById("visitor_counter_wrapper").innerHTML = "Visit #"+data;
+});
+
+
+const userCountRef = ref(db, 'pub/det_count');
+onValue(userCountRef, (snapshot) => {
+  const data = snapshot.val();
+  console.log(data);
+  document.getElementById('det_counter_wrapper').innerHTML = "Used "+data+" times.";
+}, {onlyOnce: true});
+
+
+
 const tf = require('@tensorflow/tfjs');
 
 const weights = '/web_model/model.json';
 
 const names = ['0_9', '10_11', '12_13', '14_15', '16_17', '18_20', '20_100']
+
 
 
 class App extends React.Component {
@@ -139,7 +183,17 @@ class App extends React.Component {
           </div>);
         }
       }
-      this.setState( {img_desc: description}); //lower, higher, confidence
+      this.setState( {img_desc: description}); //lower, higher, confidencevar data;
+      const newdets = this.state.num_of_detect;
+      const userCountRef = ref(db, 'pub/det_count');
+      onValue(userCountRef, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+        const updata = data + newdets;
+        set(userCountRef, updata);
+        document.getElementById('det_counter_wrapper').innerHTML = "Used "+updata+" times.";
+      }, {onlyOnce: true});
+      
 
 
       // This block used to be for drawing labels for bounding boxes
@@ -178,7 +232,7 @@ class App extends React.Component {
                 src={this.state.preview}
               />
             ) : (
-              "Choose or drop a file."
+              "Choose or drop a file to get a reading."
             )}
             <canvas id="canvas" height="640" width="640" color="#d2ff40" />
           </MagicDropzone>
