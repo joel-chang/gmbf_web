@@ -5,7 +5,7 @@ import { COLORS } from "./colors.js"
 import { CREDS } from "./creds.js"
 import "./styles.css";
 import { initializeApp } from "firebase/app";
-import { getDatabase, onDisconnect, onValue, ref, set } from "firebase/database";
+import { getDatabase, onValue, ref, set } from "firebase/database";
 
 
 // import { getAnalytics } from "firebase/analytics";
