@@ -34,6 +34,12 @@ svg {
   font-family: none !important;
 }
 
+
+a{
+  color: black;
+  font-weight: 700;
+}
+
 .Dropzone-img {
   max-width: calc(100vw - 60px);
   max-height: calc(100vw - 60px);
@@ -131,7 +137,7 @@ svg {
   line-height: small;
   padding:0;
   margin:20px 0;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 #landing_card_right_half {
@@ -149,11 +155,18 @@ svg {
   border: solid black 2px;
 }
 
+.cta_wrapper {
+  margin: 0 0 10px;
+}
 
-#cta {
-  color: white;
-  background-color: black;
-  padding: 20px;
+.reddit_wrapper {
+  height: 100px;
+  align-items: center;
+  vertical-align: middle;
+}
+
+#reddit_logo {
+  height: 30px;
 }
 
 #gmbf_logo {
@@ -177,16 +190,16 @@ svg {
 }
 
 #visitor_counter_wrapper {
-  font-size: xx-small;
-  font-weight: 300;
+  font-size: x-small;
+  font-weight: 400;
   padding: 0;
   margin: 0 0 5px 0;
   text-align: left;
 }
 
 #det_counter_wrapper {
-  font-size: xx-small;
-  font-weight: 300;
+  font-size: x-small;
+  font-weight: 400;
   padding: 0;
   margin: 0 0 5px 0;
   text-align: left;
@@ -243,6 +256,7 @@ svg {
     width: 100%;
     padding: 0;
     display:block;
+    margin-bottom: 30px;
   }
 
   .Dropzone-page {
@@ -254,7 +268,9 @@ svg {
     padding-left: 0;
     padding-right: 0;
   }
-
+  .cta_wrapper {
+    text-align: center;
+  }
   #home_icon > * {
     width: 100%;
   }

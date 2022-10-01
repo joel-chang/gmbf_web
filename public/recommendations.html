@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="recommendations.css" media="screen" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Body Fat Guesser: Learn more</title>
+</head>
+
+<body>
+    <noscript>
+        You need to enable JavaScript to run this app.
+    </noscript>
+    <div class="main">
+        <div class="landing">
+            <div id="top_part">
+                <a id="home_icon" href="/">
+                    <img src="./img/logo.png">
+                </a>
+            </div>
+            <div id="recom_page">
+                <h1 id="recom_title">Recommendations</h1>
+                <div id="recom_section">
+                    <p>
+                        As of now, the model is in it's early stages, so it's not very smart. To overcome this, you can take pictures a certain
+                        way to get better readings.
+                    </p>
+                    <ol class="recom_list">
+                        <li class="recom_item">
+                            <p>Check out the <a title="guessmybf" href="https://www.reddit.com/r/guessmybf/">r/guessmybf</a> subreddit.
+                            The more your pictures resemble those posted in r/gmbf, the easier it is for the model to give you a reading.</p>
+                        </li>
+                        <li class="recom_item">
+                            <p>Images in which your torso is encased in a 480x480px area are best.</p>
+                        </li>
+                        <li class="recom_item">
+                            <p>For some reason, most people on r/gmbf are clean shaven, tan and take mirror selfies.
+                            Mimicking them will let the model make a better prediction.</p>
+                        </li>
+                        <li class="recom_item">
+                            <p>If none of the above work, then ask the folks in r/gmbf to give you a reading and the model will improve over time.
+                            (it's a manual process for now, so don't expect too much:p )</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

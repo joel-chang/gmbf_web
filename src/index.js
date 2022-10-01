@@ -10,14 +10,14 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, onDisconnect, onValue, ref, set } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "A",
-  authDomain: "r",
-  databaseURL: "h",
-  projectId: "r",
-  storageBucket: "r",
-  messagingSenderId: "4",
-  appId: "1",
-  measurementId: "G"
+  apiKey: "AIo",
+  authDomain: "rm",
+  databaseURL: "hp",
+  projectId: "r2",
+  storageBucket: "rom",
+  messagingSenderId: "44",
+  appId: "1:9",
+  measurementId: "G-"
 };
 
 // Initialize Firebase
@@ -131,7 +131,8 @@ class App extends React.Component {
       var i;
       const box_colors = [COLORS.det0,COLORS.det1,COLORS.det2,
                           COLORS.det3,COLORS.det4,COLORS.det5,
-                          COLORS.det6,COLORS.det7,COLORS.det8
+                          COLORS.det6,COLORS.det7,COLORS.det8,
+                          COLORS.det9,COLORS.det10,COLORS.det11
                           ];
 
       const res_list = [];
@@ -151,16 +152,18 @@ class App extends React.Component {
         var upper = klass.split('_')[1]
 
         // Draw the bounding box.
-        ctx.strokeStyle = box_colors[i%9];
-        var cur_color = box_colors[i%9];
+        ctx.strokeStyle = box_colors[i%12];
+        var cur_color = box_colors[i%12];
         ctx.lineWidth = 4;
         ctx.strokeRect(x1, y1, width, height);
 
         // Draw the label background.
-        ctx.fillStyle = COLORS.img_bg;
+        ctx.fillStyle = ctx.strokeStyle;
+        ctx.fillRect(x1, y1, 11 * (1 + parseInt(i/10)), 15);
+        ctx.fillStyle = COLORS.black;
+        ctx.fillText(i, x1, y1);
         const new_subject = [lower, upper, parseInt(score*100), cur_color];
         res_list.push(new_subject);
-        // ctx.fillRect(x1, y1, textWidth + 4, textHeight + 4);
       }
 
       var description = [];
@@ -202,13 +205,14 @@ class App extends React.Component {
       //   let [x1, y1, , ] = boxes_data.slice(i * 4, (i + 1) * 4);
       //   x1 *= c.width;
       //   y1 *= c.height;
-      //   const klass = names[classes_data[i]];
-      //   const score = scores_data[i].toFixed(2);
+      //   // const klass = names[classes_data[i]];
+      //   const klass = i;
+      //   // const score = scores_data[i].toFixed(2);
 
       //   // Draw the text last to ensure it's on top.
       //   ctx.fillStyle = COLORS.dark_blue;
       //   ctx.fillText(klass, x1, y1);
-
+      //   ctx.fillRect(x1, y1, x1+10, y1-10);
       // }
     });
   };

@@ -5,12 +5,15 @@ export const COLORS = {
     dark_blue: '#0b0e14',
     det0: '#FFFFFF',
     det1: '#EF767A',
-    det2: '#6457A6',
+    det2: '#B3C2F2',
     det3: '#FFE347',
-    det4: '#644536',
-    det5: '#644536',
-    det6: '#550C18',
-    det7: '#C200FB',
-    det8: '#23F0C7',
+    det4: '#71F79F',
+    det5: '#3DD6D0',
+    det6: '#F4A259',
+    det7: '#AEA4BF',
+    det8: '#D8A47f',
+    det9: '#D8F793',
+    det10:'#A0CA92',
+    det11:'#F9B9F2'
     // your colors
   }
