@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import MagicDropzone from "react-magic-dropzone";
 import {COLORS} from "./colors.js"
+import {CREDS} from "./creds.js"
 
 import "./styles.css";
 
@@ -9,16 +10,7 @@ import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 import { getDatabase, onDisconnect, onValue, ref, set } from "firebase/database";
 
-const firebaseConfig = {
-  apiKey: "AIo",
-  authDomain: "rm",
-  databaseURL: "hp",
-  projectId: "r2",
-  storageBucket: "rom",
-  messagingSenderId: "44",
-  appId: "1:9",
-  measurementId: "G-"
-};
+const firebaseConfig = CREDS;
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
