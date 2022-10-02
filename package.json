@@ -6,15 +6,14 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "@tensorflow/tfjs": "3.9.0",
+    "@tensorflow/tfjs": "^3.20.0",
     "firebase": "^9.10.0",
-    "gh-pages": "^3.2.3",
-    "react": "16.5.2",
-    "react-dom": "16.5.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-magic-dropzone": "1.0.1",
     "react-router-dom": "^6.4.0",
-    "react-scripts": "2.0.3",
-    "web-vitals": "^2.1.4"
+    "react-scripts": "5.0.1",
+    "web-vitals": "^3.0.2"
   },
   "devDependencies": {},
   "scripts": {
