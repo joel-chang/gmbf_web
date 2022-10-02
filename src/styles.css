@@ -62,6 +62,7 @@ a{
   height: 660px;
   border-radius: 0px;
   position: relative;
+  text-align: center;
 }
 
 .Dropzone-page {

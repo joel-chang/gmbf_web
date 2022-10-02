@@ -220,7 +220,7 @@ class App extends React.Component {
             <canvas id="canvas" height="640" width="640" color="#d2ff40" />
           </MagicDropzone>
         ) : (
-          <div className="Dropzone">Loading model...</div>
+          <div className="Dropzone">Loading model...<br></br>(This might take a while!)</div>
         )}
         {
           <>
