@@ -215,7 +215,7 @@ class App extends React.Component {
                 src={this.state.preview}
               />
             ) : (
-              "Choose or drop a file to get a reading."
+              "Choose or drop an image to get a reading."
             )}
             <canvas id="canvas" height="640" width="640" color="#d2ff40" />
           </MagicDropzone>
