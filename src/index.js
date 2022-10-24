@@ -24,7 +24,7 @@ const names = ['0_9', '10_11', '12_13', '14_15', '16_17', '18_20', '20_100']
 // update db visitor count on load website
 onValue(visitCountRef, (snapshot) => {
   let data = snapshot.val();
-  data += 1;
+  data += 0;
   set(visitCountRef, data);
 }, { onlyOnce: true });
 
@@ -139,13 +139,16 @@ class App extends React.Component {
         ctx.lineWidth = 4;
         ctx.strokeRect(x1, y1, width, height);
 
-        // draw the label background
-        ctx.fillStyle = ctx.strokeStyle;
-        ctx.fillRect(x1, y1, 11 * (1 + parseInt(i / 10)), 15);
+        if (valid_detections_data > 1) {
+          // draw the label background
+          ctx.fillStyle = ctx.strokeStyle;
+          ctx.fillRect(x1, y1, 11 * (1 + parseInt(i / 10)), 15);
 
-        // draw the actual label
-        ctx.fillStyle = COLORS.black;
-        ctx.fillText(i, x1, y1);
+          // draw the actual label
+          ctx.fillStyle = COLORS.black;
+          ctx.fillText(i, x1, y1);
+        }
+        
         const new_drawing = {
           lower: lower,
           upper: upper,
@@ -190,7 +193,7 @@ class App extends React.Component {
       const userCountRef = ref(db, 'pub/det_count');
       onValue(userCountRef, (snapshot) => {
         let data = snapshot.val();
-        data += valid_detections_data; 
+        data += valid_detections_data * 0; 
         set(userCountRef, data);
       }, { onlyOnce: true });
 
