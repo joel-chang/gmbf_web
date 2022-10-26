@@ -1,0 +1,30 @@
+
+
+.recom_title_group {
+	width: 100%;
+}
+
+#recom_title {
+	font-size: xx-large;
+	line-height: xx-large;
+	padding: 0;
+	margin: 0;
+}
+
+
+.recom_item {
+	margin-bottom: 20px;
+}
+
+
+@media only screen and (max-width: 700px) {
+
+	.recom_item {
+		padding: 0;
+		margin: 0;
+	}
+
+	.recom_item>p {
+		padding: 0;
+	}
+}

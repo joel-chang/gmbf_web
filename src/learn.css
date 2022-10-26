@@ -1,0 +1,19 @@
+.faq_title_group {
+  width: 100%;
+}
+
+#faq_title {
+  font-size: xx-large;
+  line-height: xx-large;
+  padding:0;
+  margin: 0;
+}
+
+.question {
+  line-height:110%;
+}
+
+.answer {
+  padding: 0 0 30px;
+}
+
