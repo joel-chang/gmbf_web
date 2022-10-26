@@ -1,13 +1,14 @@
 html {
   display: table;
   margin: auto;
+  box-sizing: border-box;
 }
 body {
   display: table;
   color: '#000000';
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
-  max-width: 1800px;
+
   background-color: white;
   height: 100%;
   margin: auto 40px;
