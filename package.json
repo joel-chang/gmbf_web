@@ -7,17 +7,21 @@
   "main": "src/index.js",
   "dependencies": {
     "@tensorflow/tfjs": "^3.20.0",
-    "firebase": "^9.10.0",
+    "firebase": "^9.13.0",
+    "firebaseui": "^6.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-firebase-hooks": "^5.0.3",
     "react-magic-dropzone": "1.0.1",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
+    "reactjs-popup": "^2.0.5",
     "web-vitals": "^3.0.2"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "react-scripts start",
+    "start:emulators": "firebase emulators:start --only auth,database",
+    "start": "concurrently --kill-others \"npm run start:emulators\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

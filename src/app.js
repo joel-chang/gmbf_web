@@ -1,21 +1,60 @@
 import { Routes, Route, Link } from "react-router-dom"
+import "./app.css"
 import Home from "./home"
 import Detect from "./detect"
 import Learn from "./learn"
 import Recommendations from "./recommendations"
-import { initializeApp } from "firebase/app";
-import { getDatabase, onValue, ref, set } from "firebase/database";
+import { auth, provider } from "."
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { getAuth, GoogleAuthProvider, signInWithRedirect, signInWithPopup, getRedirectResult} from "firebase/auth"
+import Popup from 'reactjs-popup';
 
-import { CREDS } from "./creds.js"
-	// firebase stuff
-// const app = initializeApp(CREDS);
-// const db = getDatabase();
-// const visitCountRef = ref(db, 'pub/visitor_count');
+const LoginBTN = () => {
+	// Sign in with google
+	const signin = async () => {
+		await signInWithRedirect(auth, provider);
+	}
+	return (
+		<Popup  trigger={
+			<button>
+				SIGN IN
+			</button>
+		}>
+			<div id="login_popup_container">
+				<center>
+					<button onClick={signin}>
+						Google 
+					</button>
+				</center>
+			</div>
+			<div id='cancel_login'></div>
+		</Popup>
+	);
+}
 
-// // tensorflow
-// const tf = require('@tensorflow/tfjs');
-// const weights = '/web_model/model.json';
-// const names = ['0_9', '10_11', '12_13', '14_15', '16_17', '18_20', '20_100']
+const LogoutBTN = () => {
+	// Signout function
+	const logout = () => {
+		auth.signOut();
+	}
+
+	return (
+		<button onClick={logout}>
+			Log out
+		</button>
+	);
+}
+
+const LogButton = () => {
+	const [user] = useAuthState(auth);
+	console.log(user)
+	return (
+		user ? 
+		<LogoutBTN/>
+		: 
+		<LoginBTN/>
+	)
+}
 
 function Top() {
 	return (
@@ -24,6 +63,7 @@ function Top() {
 			<div className="button_container">
 				<Link className="perm_button" to="/">Home</Link>
 				<Link className="perm_button" to="detect">Detection</Link>
+				<LogButton/>
 			</div>
 		</div>
 	)
@@ -34,30 +74,30 @@ function Bottom() {
 		<div id="bottom_part">
 			<div className="cta_wrapper">
 				<a href="https://www.reddit.com/r/guessmybf/">
-					<img alt="Reddit" id="reddit_logo" src="./img/reddit_logo2.png"/>
+					<img alt="Reddit" id="reddit_logo" src="./img/reddit_logo2.png" />
 				</a>
 			</div>
-			<div id="visitor_counter_wrapper"></div>
+			{/* <div id="visitor_counter_wrapper"></div> */}
 			<div id="det_counter_wrapper"></div>
 		</div>
 	)
 }
 
 function App() {
-  return (
+	return (
 		<>
-		<Top/>
-    <div className="App">
-			<Routes>
-				<Route path="/" element={ <Home/> } />
-				<Route path="/detect" element={ <Detect/>} />
-				<Route path="/learn" element={ <Learn/>} />
-				<Route path="/recommendations" element={ <Recommendations/>} />
-			</Routes>
-    </div>
-		<Bottom/>
+			<Top />
+			<div className="App">
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/detect" element={<Detect />} />
+					<Route path="/learn" element={<Learn />} />
+					<Route path="/recommendations" element={<Recommendations />} />
+				</Routes>
+			</div>
+			<Bottom />
 		</>
-  )
+	)
 }
 
 export default App;

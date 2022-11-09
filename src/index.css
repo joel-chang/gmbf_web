@@ -8,7 +8,7 @@ body {
   color: '#000000';
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
-
+  min-width: 90vw;
   background-color: white;
   height: 100%;
   margin: auto 40px;
@@ -79,10 +79,12 @@ a {
   text-align: center;
   flex-grow: 1;
   text-decoration: none;
+  background-color: white;
 }
 
+
 .perm_button:hover {
-  background-color: pink;
+  background-color: pink !important;
   transition-duration: 600ms;
 }
 

@@ -1,49 +1,33 @@
 import React from "react";
 import MagicDropzone from "react-magic-dropzone";
-import { COLORS } from "./colors.js"
 import { CREDS } from "./creds.js"
 import "./detect.css";
-import { initializeApp } from "firebase/app";
 import { getDatabase, onValue, ref, set } from "firebase/database";
+import {app, db, visitCountRef, is_prod} from "./index.js";
 
-
-// import { getAnalytics } from "firebase/analytics";
-// const analytics = getAnalytics(app);
-
-// change to 1 before pushing, change to 0 when working
-const is_prod = 1;
-
-// firebase stuff
-const app = initializeApp(CREDS);
-const db = getDatabase();
-const visitCountRef = ref(db, 'pub/visitor_count');
-
+const COLORS = {
+  white: '#ffffff',
+  black: '#000000',
+  img_bg: '#ffffff',
+  dark_blue: '#0b0e14',
+  det0: '#FFFFFF',
+  det1: '#EF767A',
+  det2: '#B3C2F2',
+  det3: '#FFE347',
+  det4: '#71F79F',
+  det5: '#3DD6D0',
+  det6: '#F4A259',
+  det7: '#AEA4BF',
+  det8: '#D8A47f',
+  det9: '#D8F793',
+  det10:'#A0CA92',
+  det11:'#F9B9F2'
+}
 
 // tensorflow
 const tf = require('@tensorflow/tfjs');
 const weights = '/web_model/model.json';
 const names = ['0_9', '10_11', '12_13', '14_15', '16_17', '18_20', '20_100']
-
-// update db visitor count on load website
-onValue(visitCountRef, (snapshot) => {
-  let data = snapshot.val();
-  data += is_prod;
-  set(visitCountRef, data);
-}, { onlyOnce: true });
-
-// display visitor count displayed in DOM everytime it changes
-onValue(visitCountRef, (snapshot) => {
-  const data = snapshot.val();
-  document.getElementById("visitor_counter_wrapper").innerHTML = "Visit #" + data;
-});
-
-// display number of detections in database
-const userCountRef = ref(db, 'pub/det_count');
-onValue(userCountRef, (snapshot) => {
-  const data = snapshot.val();
-  document.getElementById('det_counter_wrapper').innerHTML = "Used " + data + " times.";
-});
-
 
 class Detect extends React.Component {
   state = {
@@ -239,6 +223,3 @@ class Detect extends React.Component {
 };
 
 export default Detect;
-
-// const rootElement = document.getElementById("landing_card_right_half");
-// ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, rootElement);
