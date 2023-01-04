@@ -9,14 +9,16 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { getAuth, GoogleAuthProvider, signInWithRedirect, signInWithPopup, getRedirectResult} from "firebase/auth"
 import Popup from 'reactjs-popup';
 
+
+// Sign in with google
+const signin = async () => {
+	await signInWithRedirect(auth, provider);
+}
+
 const LoginBTN = () => {
-	// Sign in with google
-	const signin = async () => {
-		await signInWithRedirect(auth, provider);
-	}
 	return (
 		<Popup  trigger={
-			<button>
+			<button class="login_button">
 				SIGN IN
 			</button>
 		}>
@@ -39,15 +41,14 @@ const LogoutBTN = () => {
 	}
 
 	return (
-		<button onClick={logout}>
-			Log out
+		<button class="login_button" onClick={logout}>
+			log out
 		</button>
 	);
 }
 
 const LogButton = () => {
 	const [user] = useAuthState(auth);
-	console.log(user)
 	return (
 		user ? 
 		<LogoutBTN/>
@@ -63,7 +64,7 @@ function Top() {
 			<div className="button_container">
 				<Link className="perm_button" to="/">Home</Link>
 				<Link className="perm_button" to="detect">Detection</Link>
-				<LogButton/>
+				<LogButton className="login_button"/>
 			</div>
 		</div>
 	)

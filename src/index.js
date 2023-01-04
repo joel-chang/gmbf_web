@@ -6,8 +6,9 @@ import App from './app';
 import { BrowserRouter } from 'react-router-dom';
 import { CREDS } from "./creds.js"
 import { initializeApp } from "firebase/app";
-import { getDatabase, onValue, ref, set } from "firebase/database";
+import { connectDatabaseEmulator, getDatabase, onValue, ref, set } from "firebase/database";
 // import { getAnalytics } from "firebase/analytics";
+//test line
 import {
 	getAuth,
 	connectAuthEmulator,
@@ -19,12 +20,15 @@ import {
 // const analytics = getAnalytics(app);
 const app = initializeApp(CREDS);
 const db = getDatabase();
-const visitCountRef = ref(db, 'pub/visitor_count');
+if (location.hostname === "localhost") {
+	connectDatabaseEmulator(db, "localhost", 9000);
+}
+
+const visitCountRef = ref(db, 'pub/common/visitor_count');
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 // console.log(auth);
 connectAuthEmulator(auth, "http://localhost:9099");
-
 // tensorflow
 const tf = require('@tensorflow/tfjs');
 const weights = '/web_model/model.json';
@@ -63,7 +67,7 @@ onValue(visitCountRef, (snapshot) => {
 });
 
 // display number of detections in database
-const userCountRef = ref(db, 'pub/det_count');
+const userCountRef = ref(db, 'pub/common/det_count');
 onValue(userCountRef, (snapshot) => {
   const data = snapshot.val();
   // document.getElementById('det_counter_wrapper').innerHTML =  data + " body fat percentage readings to this day.";
