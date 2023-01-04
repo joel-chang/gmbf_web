@@ -3,3 +3,5 @@ node_modules
 .firebase
 .firebaserc
 src/creds.js
+database-debug.log
+firebase-debug.log
