@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 12:52:32.112 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
 12:52:32.195 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
 12:52:36.817 [NamespaceSystem-akka.actor.default-dispatcher-6] INFO com.firebase.core.namespace.NamespaceActor - reacttest-a9592-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 71ms, init: 0ms
@@ -12,3 +13,15 @@ the firebase.json emulators config.
 13:01:13.942 [NamespaceSystem-akka.actor.default-dispatcher-25] INFO com.firebase.core.namespace.NamespaceActor - stopped namespace actor for 127
 13:01:13.942 [NamespaceSystem-akka.actor.default-dispatcher-24] INFO com.firebase.core.namespace.NamespaceActor - stopped namespace actor for reacttest-a9592-default-rtdb
 13:01:13.944 [Thread-0] INFO com.firebase.server.forge.App$ - Graceful shutdown complete.
+=======
+18:37:57.869 [NamespaceSystem-akka.actor.default-dispatcher-6] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+18:37:58.046 [main] INFO com.firebase.server.forge.App$ - Listening at localhost:9000
+18:38:06.057 [NamespaceSystem-akka.actor.default-dispatcher-7] INFO com.firebase.core.namespace.NamespaceActor - reacttest-a9592-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 106ms, init: 0ms
+18:38:06.116 [NamespaceSystem-blocking-namespace-operation-dispatcher-8:reacttest-a9592-default-rtdb$-1731481239:] INFO com.firebase.core.namespace.StateManager - Namespace reacttest-a9592-default-rtdb status Active to Active
+18:38:10.059 [NamespaceSystem-akka.actor.default-dispatcher-16] INFO com.firebase.core.namespace.NamespaceActor - fake-server successfully activated FBKV (SurveyIdle(0)) wait: 2ms, init: 0ms
+23:49:32.147 [Thread-0] INFO com.firebase.server.forge.App$ - Attempting graceful shutdown.
+23:49:32.151 [NamespaceSystem-akka.actor.default-dispatcher-67] INFO com.firebase.core.namespace.Terminator$Terminator - 2 actors left to terminate: reacttest-a9592-default-rtdb, fake-server
+23:49:32.154 [NamespaceSystem-akka.actor.default-dispatcher-70] INFO com.firebase.core.namespace.NamespaceActor - stopped namespace actor for reacttest-a9592-default-rtdb
+23:49:32.156 [NamespaceSystem-akka.actor.default-dispatcher-67] INFO com.firebase.core.namespace.NamespaceActor - stopped namespace actor for fake-server
+23:49:32.158 [Thread-0] INFO com.firebase.server.forge.App$ - Graceful shutdown complete.
+>>>>>>> a57e0be (lint fixes)
