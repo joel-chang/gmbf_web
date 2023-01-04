@@ -2,8 +2,15 @@ import React from "react";
 import MagicDropzone from "react-magic-dropzone";
 import { CREDS } from "./creds.js"
 import "./detect.css";
-import { getDatabase, onValue, ref, set } from "firebase/database";
+import { get, getDatabase, onValue, ref, set } from "firebase/database";
 import {app, db, visitCountRef, is_prod} from "./index.js";
+import { signInWithRedirect } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup, getRedirectResult} from "firebase/auth"
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth, provider} from "."
+
+
+console.log("clicked try it out button")
 
 const COLORS = {
   white: '#ffffff',
@@ -28,6 +35,63 @@ const COLORS = {
 const tf = require('@tensorflow/tfjs');
 const weights = '/web_model/model.json';
 const names = ['0_9', '10_11', '12_13', '14_15', '16_17', '18_20', '20_100']
+
+const OfferLoginBTN = () => {
+  console.log("clicked offer login")
+  return (
+    <div>
+      Create an account or sign in to save your progress.
+    </div>
+  );
+}
+
+const getAllRecords = () => {
+  console.log("getting all records")
+  const userId = auth.currentUser?.uid
+  console.log("for user: "+userId)
+  const record = ref(db, "pub/users/"+userId+'/')
+  console.log(record)
+}
+
+const saveRecord = ({bfPercentage='28', weight='69', imageId='NA'}) => {
+  console.log("save record")
+  const userId = auth.currentUser?.uid
+  console.log(userId)
+  const timeKey = new Date().getTime().toString();
+  console.log(timeKey)
+  const record = ref(db, 'pub/users/'+userId+'/'+timeKey)
+  console.log("bfPeercentage: " + bfPercentage)
+  console.log(bfPercentage)
+  console.log(weight)
+  set(record, {
+    bf_percentage: bfPercentage,
+    weight: weight,
+    image_id: imageId
+  })
+  console.log("goung to get all records")
+  getAllRecords()
+}
+
+const OfferSaveBTN = () => {
+  return (
+    <button onClick={saveRecord}>
+      Log your records!
+    </button>
+  );
+}
+
+const OfferBTN = ({num_of_detections}) => {
+  const [user] = useAuthState(auth)
+  if (num_of_detections != 1) {
+    return (<></>)
+  }
+  return (
+    user ?
+    <OfferSaveBTN/>
+    :
+    <OfferLoginBTN/>
+  )
+}
 
 class Detect extends React.Component {
   state = {
@@ -217,7 +281,8 @@ class Detect extends React.Component {
           {this.state.img_desc}
           </>
         }
-      </div>
+      <OfferBTN num_of_detections={this.state.num_of_detect}/>
+    </div>
     );
   };
 };

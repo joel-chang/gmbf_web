@@ -1,0 +1,16 @@
+.login_button {
+    background-color: pink;
+    border-width: 0px;
+    border-color: black;
+    border-style: solid;
+    font-weight: 700;
+    font-size: 16px;
+    font-style:italic;
+    padding: 0 40px;
+    border-radius: 0;
+}
+
+.login_button:hover {
+    background-color: #D2879D;
+}
+

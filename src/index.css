@@ -92,6 +92,11 @@ a {
   display: inline-block;
 }
 
+.login_button {
+  background-color: pink;
+  border-radius: 0;
+}
+
 .App {
   padding: 100px;
 }
