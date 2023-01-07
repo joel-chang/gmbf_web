@@ -24,15 +24,16 @@ import {
 // const analytics = getAnalytics(app);
 const app = initializeApp(CREDS)
 const db = getDatabase()
+const auth = getAuth(app)
+
 if (location.hostname === 'localhost') {
   connectDatabaseEmulator(db, 'localhost', 9000)
+  connectAuthEmulator(auth, 'http://localhost:9099')
 }
 
 const visitCountRef = ref(db, 'pub/common/visitor_count')
-const auth = getAuth(app)
 const provider = new GoogleAuthProvider()
-// console.log(auth);
-connectAuthEmulator(auth, 'http://localhost:9099')
+
 // tensorflow
 const tf = require('@tensorflow/tfjs')
 const weights = '/web_model/model.json'
