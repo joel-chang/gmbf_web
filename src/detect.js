@@ -5,6 +5,7 @@ import { onValue, ref, set } from 'firebase/database'
 import { db, is_prod } from './index.js'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '.'
+import OfferSaveForm from './log_record'
 
 console.log('clicked try it out button')
 
@@ -38,42 +39,47 @@ const OfferLoginBTN = () => {
 }
 
 const getAllRecords = () => {
-  console.log('getting all records')
   const userId = auth.currentUser?.uid
-  console.log('for user: ' + userId)
   const record = ref(db, 'pub/users/' + userId + '/')
   console.log(record)
 }
 
-const saveRecord = ({ bfPercentage = '28', weight = '69', imageId = 'NA' }) => {
-  console.log('save record')
-  const userId = auth.currentUser?.uid
-  console.log(userId)
-  const timeKey = new Date().getTime().toString()
-  console.log(timeKey)
-  const record = ref(db, 'pub/users/' + userId + '/' + timeKey)
-  console.log('bfPeercentage: ' + bfPercentage)
-  console.log(bfPercentage)
-  console.log(weight)
-  set(record, {
-    bf_percentage: bfPercentage,
-    weight: weight,
-    image_id: imageId,
-  })
-  console.log('goung to get all records')
-  getAllRecords()
-}
+const saveRecord = ({
+  bfPercentage = '98',
+  weight = '96',
+  imageId = 'NA',
+}) => {}
 
 const OfferSaveBTN = () => {
   return <button onClick={saveRecord}>Log your records!</button>
 }
 
-const OfferBTN = ({ num_of_detections }) => {
+const OfferOneTorsoBTN = () => {
+  return <>Upload just one torso.</>
+}
+
+const OfferForm = ({ num_of_detections }) => {
   const [user] = useAuthState(auth)
-  if (num_of_detections !== 1) {
-    return <></>
+  if (!user) {
+    return <OfferLoginBTN />
   }
-  return user ? <OfferSaveBTN /> : <OfferLoginBTN />
+  switch (num_of_detections) {
+    case 0:
+      return <></>
+    case 1:
+      return (
+        <OfferSaveForm
+          auth={auth}
+          db={db}
+          bfPercentage="28"
+          weight="69"
+          imageId="NA"
+        />
+      )
+
+    case 2:
+      return <OfferOneTorsoBTN />
+  }
 }
 
 class Detect extends React.Component {
@@ -286,7 +292,7 @@ class Detect extends React.Component {
           </div>
         )}
         {<>{this.state.img_desc}</>}
-        <OfferBTN num_of_detections={this.state.num_of_detect} />
+        <OfferForm num_of_detections={this.state.num_of_detect} />
       </div>
     )
   }

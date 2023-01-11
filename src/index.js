@@ -2,7 +2,7 @@ import React from 'react'
 import * as ReactDOMClient from 'react-dom/client'
 import './index.css'
 import App from './app'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, useLocation } from 'react-router-dom'
 import { CREDS } from './creds.js'
 import { initializeApp } from 'firebase/app'
 import {
@@ -22,14 +22,20 @@ import {
 
 // firebase stuff
 // const analytics = getAnalytics(app);
+
 const app = initializeApp(CREDS)
 const db = getDatabase()
 const auth = getAuth(app)
 
-if (location.hostname === 'localhost') {
-  connectDatabaseEmulator(db, 'localhost', 9000)
-  connectAuthEmulator(auth, 'http://localhost:9099')
+function UseDevEnv() {
+  // eslint-disable-next-line no-restricted-globals
+  if (location.hostname === 'localhost') {
+    console.log('in localhost, using emulators for db and auth')
+    connectDatabaseEmulator(db, 'localhost', 9000)
+    connectAuthEmulator(auth, 'http://localhost:9099')
+  }
 }
+UseDevEnv()
 
 const visitCountRef = ref(db, 'pub/common/visitor_count')
 const provider = new GoogleAuthProvider()
@@ -41,17 +47,17 @@ const names = ['0_9', '10_11', '12_13', '14_15', '16_17', '18_20', '20_100']
 
 const root = ReactDOMClient.createRoot(document.getElementById('root'))
 
-const loginEmailPassword = async () => {
-  const loginEmail = txtEmail.value
-  const loginPassword = txtPassword.value
+// const loginEmailPassword = async () => {
+//   const loginEmail = txtEmail.value
+//   const loginPassword = txtPassword.value
 
-  const userCredential = await signInWithEmailAndPassword(
-    auth,
-    loginEmail,
-    loginPassword
-  )
-  // console.log(userCredential.user);
-}
+//   const userCredential = await signInWithEmailAndPassword(
+//     auth,
+//     loginEmail,
+//     loginPassword
+//   )
+//   // console.log(userCredential.user);
+// }
 
 root.render(
   <BrowserRouter>
@@ -86,15 +92,4 @@ onValue(userCountRef, (snapshot) => {
   // document.getElementById('det_counter_wrapper').innerHTML =  data + " body fat percentage readings to this day.";
 })
 
-export {
-  app,
-  provider,
-  auth,
-  db,
-  visitCountRef,
-  is_prod,
-  tf,
-  weights,
-  names,
-  loginEmailPassword,
-}
+export { app, provider, auth, db, visitCountRef, is_prod, tf, weights, names }
