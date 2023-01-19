@@ -6,7 +6,6 @@ import { db, is_prod } from './index.js'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '.'
 
-console.log('clicked try it out button')
 
 const COLORS = {
   white: '#ffffff',
@@ -26,16 +25,16 @@ const COLORS = {
   det10: '#A0CA92',
   det11: '#F9B9F2',
 }
-
-// tensorflow
 const tf = require('@tensorflow/tfjs')
 const weights = '/web_model/model.json'
 const names = ['0_9', '10_11', '12_13', '14_15', '16_17', '18_20', '20_100']
+
 
 const OfferLoginBTN = () => {
   console.log('clicked offer login')
   return <div>Create an account or sign in to save your progress.</div>
 }
+
 
 const getAllRecords = () => {
   console.log('getting all records')
@@ -44,6 +43,7 @@ const getAllRecords = () => {
   const record = ref(db, 'pub/users/' + userId + '/')
   console.log(record)
 }
+
 
 const saveRecord = ({ bfPercentage = '28', weight = '69', imageId = 'NA' }) => {
   console.log('save record')
@@ -64,9 +64,11 @@ const saveRecord = ({ bfPercentage = '28', weight = '69', imageId = 'NA' }) => {
   getAllRecords()
 }
 
+
 const OfferSaveBTN = () => {
   return <button onClick={saveRecord}>Log your records!</button>
 }
+
 
 const OfferBTN = ({ num_of_detections }) => {
   const [user] = useAuthState(auth)
@@ -75,6 +77,7 @@ const OfferBTN = ({ num_of_detections }) => {
   }
   return user ? <OfferSaveBTN /> : <OfferLoginBTN />
 }
+
 
 class Detect extends React.Component {
   state = {

@@ -14,6 +14,7 @@ const signin = async () => {
   await signInWithRedirect(auth, provider)
 }
 
+
 const LoginBTN = () => {
   return (
     <Popup trigger={<button class="login_button">SIGN IN</button>}>
@@ -26,6 +27,7 @@ const LoginBTN = () => {
     </Popup>
   )
 }
+
 
 const LogoutBTN = () => {
   // Signout function
@@ -40,10 +42,12 @@ const LogoutBTN = () => {
   )
 }
 
+
 const LogButton = () => {
   const [user] = useAuthState(auth)
   return user ? <LogoutBTN /> : <LoginBTN />
 }
+
 
 function Top() {
   return (
@@ -64,6 +68,7 @@ function Top() {
   )
 }
 
+
 function Bottom() {
   return (
     <div id="bottom_part">
@@ -77,6 +82,7 @@ function Bottom() {
     </div>
   )
 }
+
 
 function App() {
   return (
