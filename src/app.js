@@ -17,7 +17,7 @@ const signin = async () => {
 
 const LoginBTN = () => {
   return (
-    <Popup trigger={<button class="login_button">SIGN IN</button>}>
+    <Popup trigger={<button className="login_button">SIGN IN</button>}>
       <div id="login_popup_container">
         <center>
           <button onClick={signin}>Google</button>
@@ -36,7 +36,7 @@ const LogoutBTN = () => {
   }
 
   return (
-    <button class="login_button" onClick={logout}>
+    <button className="login_button" onClick={logout}>
       log out
     </button>
   )
