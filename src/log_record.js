@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useState } from 'react'
 import { ref, set } from 'firebase/database'
 import { db } from './index.js'
 import { auth } from '.'
@@ -9,14 +10,13 @@ const getAllRecords = () => {
   console.log(record)
 }
 
-const OfferSaveForm = ({
-  auth,
-  db,
-  bfPercentage = '28',
-  weight = '69',
-  imageId = 'NA',
-}) => {
-  const upload_record = () => {
+const OfferSaveForm = ({ auth, db, bfPercentage, weight, imageId = 'NA' }) => {
+  const [name, setName] = useState('')
+
+  const upload_record = (event) => {
+    event.preventDefault()
+    console.log('date')
+    console.log(name)
     const userId = auth.currentUser?.uid
     const timeKey = new Date().getTime().toString()
     const record = ref(db, 'pub/users/' + userId + '/' + timeKey)
@@ -25,8 +25,8 @@ const OfferSaveForm = ({
       weight: weight,
       image_id: imageId,
     })
-    console.log('goung to get all records')
-    getAllRecords()
+    console.log('going to get all records')
+    console.log(ref(db, 'pub/users/' + userId + '/'))
   }
 
   return (
@@ -34,22 +34,25 @@ const OfferSaveForm = ({
       trigger={<button>Save your progress!</button>}
       // menu={[<button onClick={upload_record}>Upload record.</button>]}
       menu={[
-        <>
-          <form>
-            <label>
-              Date:
-              <input type="Date" name="date" />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
-          <form>
-            <label>
-              Date:
-              <input type="Date" name="date" />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
-        </>,
+        <form onSubmit={upload_record}>
+          <label>
+            Date:
+            <input
+              type="Date"
+              name="date"
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+          <label>
+            Weight
+            <input
+              type="text"
+              name="weight"
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+          <input type="submit" />
+        </form>,
       ]}
     />
   )

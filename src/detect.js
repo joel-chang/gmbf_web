@@ -7,7 +7,6 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '.'
 import OfferSaveForm from './log_record'
 
-
 const COLORS = {
   white: '#ffffff',
   black: '#000000',
@@ -30,12 +29,10 @@ const tf = require('@tensorflow/tfjs')
 const weights = '/web_model/model.json'
 const names = ['0_9', '10_11', '12_13', '14_15', '16_17', '18_20', '20_100']
 
-
 const OfferLoginBTN = () => {
   console.log('clicked offer login')
   return <div>Create an account or sign in to save your progress.</div>
 }
-
 
 const getAllRecords = () => {
   const userId = auth.currentUser?.uid
@@ -43,24 +40,21 @@ const getAllRecords = () => {
   console.log(record)
 }
 
-
 const saveRecord = ({
   bfPercentage = '98',
   weight = '96',
   imageId = 'NA',
 }) => {}
 
-
 const OfferSaveBTN = () => {
   return <button onClick={saveRecord}>Log your records!</button>
 }
-
 
 const OfferOneTorsoBTN = () => {
   return <>Upload just one torso.</>
 }
 
-const OfferForm = ({ num_of_detections }) => {
+const OfferForm = ({ num_of_detections, bf_percentage }) => {
   const [user] = useAuthState(auth)
   if (!user) {
     return <OfferLoginBTN />
@@ -73,7 +67,7 @@ const OfferForm = ({ num_of_detections }) => {
         <OfferSaveForm
           auth={auth}
           db={db}
-          bfPercentage="28"
+          bfPercentage={bf_percentage}
           weight="69"
           imageId="NA"
         />
@@ -83,7 +77,6 @@ const OfferForm = ({ num_of_detections }) => {
       return <OfferOneTorsoBTN />
   }
 }
-
 
 class Detect extends React.Component {
   state = {
@@ -250,7 +243,7 @@ class Detect extends React.Component {
           )
         }
       }
-
+      this.setState({ principal_bf: res_list[0] })
       this.setState({ img_desc: description }) // lower, higher, confidencevar data;
 
       // add number of just found detections to database
@@ -295,7 +288,10 @@ class Detect extends React.Component {
           </div>
         )}
         {<>{this.state.img_desc}</>}
-        <OfferForm num_of_detections={this.state.num_of_detect} />
+        <OfferForm
+          num_of_detections={this.state.num_of_detect}
+          bf_percentage={this.state.principal_bf}
+        />
       </div>
     )
   }
