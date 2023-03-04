@@ -29,38 +29,13 @@ const tf = require('@tensorflow/tfjs')
 const weights = '/web_model/model.json'
 const names = ['0_9', '10_11', '12_13', '14_15', '16_17', '18_20', '20_100']
 
-const OfferLoginBTN = () => {
-  console.log('clicked offer login')
-  return <div>Create an account or sign in to save your progress.</div>
-}
-
-const getAllRecords = () => {
-  const userId = auth.currentUser?.uid
-  const record = ref(db, 'pub/users/' + userId + '/')
-  console.log(record)
-}
-
-const saveRecord = ({
-  bfPercentage = '98',
-  weight = '96',
-  imageId = 'NA',
-}) => {}
-
-const OfferSaveBTN = () => {
-  return <button onClick={saveRecord}>Log your records!</button>
-}
-
-const OfferOneTorsoBTN = () => {
-  return <>Upload just one torso.</>
-}
-
 const OfferForm = ({ num_of_detections, bf_percentage }) => {
   const [user] = useAuthState(auth)
   if (!user) {
-    return <OfferLoginBTN />
+    return <div>Create an account or sign in to save your progress.</div>
   }
   switch (num_of_detections) {
-    case 0:
+    case 0 || undefined:
       return <></>
     case 1:
       return (
@@ -68,13 +43,11 @@ const OfferForm = ({ num_of_detections, bf_percentage }) => {
           auth={auth}
           db={db}
           bfPercentage={bf_percentage}
-          weight="69"
           imageId="NA"
         />
       )
-
-    case 2:
-      return <OfferOneTorsoBTN />
+    default:
+      return <div>Upload just one torso.</div>
   }
 }
 
