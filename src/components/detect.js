@@ -1,10 +1,10 @@
 import React from 'react'
 import MagicDropzone from 'react-magic-dropzone'
-import './detect.css'
+import '../styles/detect.css'
 import { onValue, ref, set } from 'firebase/database'
-import { db, is_prod } from './index.js'
+import { db, is_prod } from '../index.js'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth } from '.'
+import { auth } from '..'
 import OfferSaveForm from './log_record'
 
 const COLORS = {

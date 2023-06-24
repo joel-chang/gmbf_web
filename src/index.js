@@ -1,9 +1,9 @@
 import React from 'react'
 import * as ReactDOMClient from 'react-dom/client'
-import './index.css'
-import App from './app'
+import './styles/index.css'
+import App from './components/app'
 import { BrowserRouter, useLocation } from 'react-router-dom'
-import { CREDS } from './creds.js'
+import { CREDS } from './creds'
 import { initializeApp } from 'firebase/app'
 import {
   connectDatabaseEmulator,

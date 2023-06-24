@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import './home.css'
+import '../styles/home.css'
 function Home() {
   return (
     <div className="landing_card_title_group">

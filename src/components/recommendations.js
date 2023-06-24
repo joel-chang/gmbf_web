@@ -1,4 +1,4 @@
-import './recommendations.css'
+import '../styles/recommendations.css'
 
 function Recommendations() {
   return (

@@ -1,4 +1,4 @@
-import './learn.css'
+import '../styles/learn.css'
 
 function Learn() {
   return (
